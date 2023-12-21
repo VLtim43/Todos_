@@ -12,7 +12,23 @@ app.get("/", (_req, res) => {
   res.json("Hello World from Express");
 });
 
-app.get("/users", async (_req, res) => {
+app.post("/todos", async (req, res) => {
+  try {
+    const { todo, done } = req.body;
+    const newTodo = await prisma.todo.create({
+      data: {
+        todo,
+        done,
+      },
+    });
+    res.status(201).json(newTodo);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error creating todo");
+  }
+});
+
+app.get("/todos", async (_req, res) => {
   try {
     const users = await prisma.todo.findMany();
     res.json(users);
