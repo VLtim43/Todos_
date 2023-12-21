@@ -37,6 +37,21 @@ app.get("/todos", async (_req, res) => {
   }
 });
 
+app.delete("/todos/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const todo = await prisma.todo.delete({
+      where: {
+        id: parseInt(id),
+      },
+    });
+    res.json({ message: "Todo deleted successfully", todo });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error deleting todo");
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Express is running at http://localhost:8080`);
 });
