@@ -1,7 +1,7 @@
 - crud API
 - postgreSQL 
 - Docker if possible
-- user auth?
+
 
 
 - js

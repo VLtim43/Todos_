@@ -9,7 +9,24 @@ const prisma = new PrismaClient();
 app.use(express.json());
 
 app.get("/", (_req, res) => {
-  res.json("Hello World from Express");
+  res.json([
+    "Hello World from Express",
+    "--------------------------",
+    "Node.JS",
+    "Express",
+  ]);
+});
+
+app.get("/todos", async (_req, res) => {
+  try {
+    const todos = await prisma.todo.findMany();
+    //
+    todos.length === 0 ? res.json({ message: "No todos" }) : res.json(todos);
+    //
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "An error occurred while fetching todos" });
+  }
 });
 
 app.post("/todos", async (req, res) => {
@@ -25,15 +42,6 @@ app.post("/todos", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).send("Error creating todo");
-  }
-});
-
-app.get("/todos", async (_req, res) => {
-  try {
-    const users = await prisma.todo.findMany();
-    res.json(users);
-  } catch (err) {
-    console.log(err);
   }
 });
 

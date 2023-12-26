@@ -13,6 +13,28 @@ npx prisma migrate dev --name init
 
 ```
 
+## Local Database
+
+```
+docker run -d \
+  --name postgres \
+  -e POSTGRES_PASSWORD=postgres \
+  -p 5533:5432 \
+  postgres:latest
+```
+
+```
+npx prisma migrate dev --name init
+```
+
+## Curl
+
+```
+curl -X POST http://localhost:8080/todos \
+-H "Content-Type: application/json" \
+-d '{"todo": "Your Todo Task Here", "done": false}'
+```
+
 ## Tech & framework used
 
 - [Docker](https://www.docker.com/), an open platform for developing, shipping, and running applications
