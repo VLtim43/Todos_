@@ -1,0 +1,31 @@
+- crud API
+- postgreSQL 
+- Docker if possible
+- user auth?
+
+
+- js
+ - node-express
+ - bun-elysia
+ - nestjs-angular
+ - nuxt-vue
+ - sveltkit-svelt
+ - emberjs-handlebars
+
+ - gatsby?
+ - redwoodjs?
+ - meteorjs?
+
+- vapor-swift
+- ruby-rails
+- php-laravel
+- pyhton-django
+
+- java-spring
+- groovy-grails
+- kotlin-ktor
+
+- asp.net-blazor
+
+- lua-lapis?
+- pearl-mojolicious?
