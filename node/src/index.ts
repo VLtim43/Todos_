@@ -7,6 +7,9 @@ const PORT = 8080;
 const prisma = new PrismaClient();
 
 app.use(express.json());
+app.listen(PORT, () => {
+  console.log(`Express is running at http://localhost:8080`);
+});
 
 app.get("/", (_req, res) => {
   res.json([
@@ -14,6 +17,8 @@ app.get("/", (_req, res) => {
     "--------------------------",
     "Node.JS",
     "Express",
+    "Prisma",
+    "PostgreSQL 🐘",
   ]);
 });
 
@@ -58,8 +63,4 @@ app.delete("/todos/:id", async (req, res) => {
     console.error(err);
     res.status(500).send("Error deleting todo");
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`Express is running at http://localhost:8080`);
 });
